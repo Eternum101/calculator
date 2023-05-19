@@ -32,8 +32,9 @@ body {
 
 .calculator-grid button {
     cursor: pointer;
-    background-color: #3C3C3C;
+    background-color: #262626;
     font-size: 2rem;
+    font-weight: 700;
     outline: none;
     display: block;
     border-radius: 1rem;
@@ -91,3 +92,27 @@ body {
     color: #EB6666;
 }
 
+/* Footer Styling */
+footer {
+    display: flex;
+    margin-top: auto;
+    height: 100px;
+    width: 100%;
+    background-color: #1f1f1f;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+}
+
+/* Font Awesome Styling */
+.fa-github {
+    color: white;
+    font-size: 25px;
+    padding-left: 10px;
+    transition: transform 250ms;
+}
+
+.fa-github:hover {
+    transform: translateY(-10px);
+}
