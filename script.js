@@ -15,9 +15,9 @@ class Calculator {
     }
 
     clear() {
-        this.currentOperand = '';
+        this.currentOperand = '0';
         this.previousOperand = '';
-        this.operation = undefined; 
+        this.operation = undefined;
     }
 
     delete() {
@@ -110,32 +110,57 @@ numberButtons.forEach(button => {
         calculator.appendNumber(button.innerText);
         calculator.updateDisplay();
     })
-})
+});
 
 operationButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.chooseOperation(button.innerText);
         calculator.updateDisplay();
     })
-})
+});
 
 equalsButton.addEventListener('click', button => {
     calculator.compute();
     calculator.updateDisplay(); 
-})
+});
 
 allClearButton.addEventListener('click', button => {
     calculator.clear();
     calculator.updateDisplay(); 
-})
+});
 
 clearButton.addEventListener('click', button => {
     calculator.clear();
     calculator.updateDisplay(); 
-})
+});
 
 backSpaceButton.addEventListener('click', button => {
     calculator.delete();
     calculator.updateDisplay(); 
-})
+});
+
+window.addEventListener('keydown', event => {
+    if (event.key >= 0 && event.key <= 9) {
+        calculator.appendNumber(event.key);
+        calculator.updateDisplay();
+    } else if (event.key === '+' || event.key === '-') {
+        calculator.chooseOperation(event.key);
+        calculator.updateDisplay();
+    } else if (event.key === '*') {
+        calculator.chooseOperation('x');
+        calculator.updateDisplay();
+    } else if (event.key === '/') {
+        calculator.chooseOperation('÷');
+        calculator.updateDisplay();
+    } else if (event.key === 'Backspace') {
+        calculator.delete();
+        calculator.updateDisplay();
+    } else if (event.key === 'Enter' || event.key === "=") {
+        calculator.compute();
+        calculator.updateDisplay();
+    } else if (event.key === 'Escape') {
+        calculator.clear();
+        calculator.updateDisplay();
+    }
+});
 
