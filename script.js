@@ -61,7 +61,11 @@ class Calculator {
                 computation = prev * current;
                 break
             case '÷':
-                computation = prev / current;
+                if (current === 0) {
+                    this.currentOperandTextElement.innerText = "Math ERROR";
+                } else {
+                    computation = prev / current;
+                }
                 break
             default: 
                 return;
@@ -121,6 +125,11 @@ equalsButton.addEventListener('click', button => {
 })
 
 allClearButton.addEventListener('click', button => {
+    calculator.clear();
+    calculator.updateDisplay(); 
+})
+
+clearButton.addEventListener('click', button => {
     calculator.clear();
     calculator.updateDisplay(); 
 })
