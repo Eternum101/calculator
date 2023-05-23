@@ -1,3 +1,4 @@
+// Declaring variables
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
@@ -7,6 +8,8 @@ const clearButton = document.querySelector('[data-clear]');
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
 const currentOperandTextElement = document.querySelector('[data-current-operand]');
 
+// Defines a Calculator class with a contructor that initializes instance variables
+// and calls the clear method
 class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement;
@@ -14,16 +17,20 @@ class Calculator {
         this.clear();
     }
 
+    // Resets the currentOperand, previousOperand and operation instance variables
     clear() {
         this.currentOperand = '0';
         this.previousOperand = '';
         this.operation = undefined;
     }
 
+    // Removes the last character of the currentOperand instance variable
     delete() {
         this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
+    // Appends the given number to the calculators current operand, taking into
+    // account the presence of a decimal place
     appendNumber(number) {
         if (number === '.' && this.currentOperand.includes('.')) {
             return;
@@ -31,6 +38,8 @@ class Calculator {
         this.currentOperand = this.currentOperand.toString() + number.toString();
     }
 
+    // Sets the operation instance variable and updates previousOperand and
+    // currentOperand instance variables
     chooseOperation(operation) {
         if (this.currentOperand === '') {
             return;
@@ -43,6 +52,8 @@ class Calculator {
         this.currentOperand = '';
     }
 
+    // Computes the result of the current operation between the previous and current
+    // operands and updates the calculators values accordingly
     compute() {
         let computation;
         const prev = parseFloat(this.previousOperand);
@@ -75,6 +86,8 @@ class Calculator {
         this.previousOperand = '';
     }
 
+    // Takes in a number and returns a string representation of the number with proper
+    // formatting for integer and decimal digits 
     getDisplayNumber(number) {
         const stringNumber = number.toString();
         const integerDigits = parseFloat(stringNumber.split('.')[0]);
@@ -93,6 +106,8 @@ class Calculator {
         }
     }
 
+    // Updates the text of the current and previous operand elements on the calculator
+    // display based on the current values and operation
     updateDisplay() {
         this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
         if (this.operation != null) {
@@ -103,8 +118,13 @@ class Calculator {
     }
 }
 
+// Creates a new instance of the Calculator class and passes in the previous and
+// current operand text elements as arguments
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
+// Adds event listeners to the calculators buttons to perform various actions such as
+// appending numbers, choosing operations, computing results and clearing values when
+// clicked
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText);
@@ -139,15 +159,16 @@ backSpaceButton.addEventListener('click', button => {
     calculator.updateDisplay(); 
 });
 
+// Keyboard support
 window.addEventListener('keydown', event => {
-    if (event.key >= 0 && event.key <= 9) {
+    if (event.key >= 0 && event.key <= 9 || event.key === '.') {
         calculator.appendNumber(event.key);
         calculator.updateDisplay();
     } else if (event.key === '+' || event.key === '-') {
         calculator.chooseOperation(event.key);
         calculator.updateDisplay();
     } else if (event.key === '*') {
-        calculator.chooseOperation('x');
+        calculator.chooseOperation('x');2
         calculator.updateDisplay();
     } else if (event.key === '/') {
         calculator.chooseOperation('÷');

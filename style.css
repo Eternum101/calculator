@@ -17,6 +17,7 @@ body {
     padding-top: 20px;
 }
 
+/* Header Styling */
 .header {
     font-size: 48px;
     font-weight: 700;
@@ -28,6 +29,7 @@ body {
     color: white;
 }
 
+/* Calculator Styling */
 .container {
     background-color: #303030;
     padding: 20px;
