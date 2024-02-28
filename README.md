@@ -14,16 +14,19 @@ A on-screen calculator that performs arithmetic operations in a web-based applic
 ## Screenshots
 
 ### Initial Screen
-![](screenshots/initial-screen-etch-a-sketch.png)
+![](screenshots/initial-screen-calculator.png)
 
-### Colour Mode
-![](screenshots/colour-mode-etch-a-sketch.png)
+### Operations
+![](screenshots/operations-calculator.png)
 
-### Rainbow Mode
-![](screenshots/rainbow-mode-etch-a-sketch.png)
+### Operations Output
+![](screenshots/operations-output-calculator.png)
 
-### Grid Adjustability
-![](screenshots/grid-adjustability-etch-a-sketch.png)
+### Floating Point Numbers
+![](screenshots/floating-point-calculator.png)
+
+### Floating Point Numbers Output
+![](screenshots/floating-point-output-calculator.png)
 
 [Back to Top](#calculator)
 
