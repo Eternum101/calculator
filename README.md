@@ -1,6 +1,6 @@
 # Calculator
 
-View Demo
+🔗 [View Demo](https://eternum101.github.io/calculator/)
 
 ## Table of Contents
 - [About The Project](#about-the-project)
