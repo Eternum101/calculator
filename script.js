@@ -14,19 +14,26 @@ class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement) {
         this.previousOperandTextElement = previousOperandTextElement;
         this.currentOperandTextElement = currentOperandTextElement;
-        this.clear();
+        this.clearCurrent();
     }
 
-    // Resets the currentOperand, previousOperand and operation instance variables
+    // // Resets the currentOperand, previousOperand and operation instance variables 
     clear() {
         this.currentOperand = '0';
         this.previousOperand = '';
         this.operation = undefined;
     }
 
+    // Resets the currentOperand 
+    clearCurrent() {
+        this.currentOperand = '0';
+    }
+
     // Removes the last character of the currentOperand instance variable
     delete() {
-        this.currentOperand = this.currentOperand.toString().slice(0, -1);
+        if (this.currentOperand !== '0') {
+            this.currentOperand = this.currentOperand.toString().slice(0, -1);
+        }
     }
 
     // Appends the given number to the calculators current operand, taking into
@@ -150,7 +157,7 @@ allClearButton.addEventListener('click', button => {
 });
 
 clearButton.addEventListener('click', button => {
-    calculator.clear();
+    calculator.clearCurrent();
     calculator.updateDisplay(); 
 });
 
@@ -161,6 +168,7 @@ backSpaceButton.addEventListener('click', button => {
 
 // Keyboard support
 window.addEventListener('keydown', event => {
+    event.preventDefault();
     if (event.key >= 0 && event.key <= 9 || event.key === '.') {
         calculator.appendNumber(event.key);
         calculator.updateDisplay();
@@ -184,4 +192,3 @@ window.addEventListener('keydown', event => {
         calculator.updateDisplay();
     }
 });
-
